@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>AuraChat Yükleniyor...</title>
+    <style>
+        /*
+            YENİ TASARIM: Modern, animasyonlu ve temaya uygun açılış ekranı.
+            - Uygulamanın ana temasındaki gradyan arka plan kullanıldı.
+            - Logo ve metin için yumuşak bir "belirme" animasyonu eklendi.
+            - Standart spinner yerine daha zarif, "nefes alan" noktalardan oluşan bir yükleme animasyonu tasarlandı.
+            - Genel yerleşim ve tipografi, daha profesyonel bir görünüm için iyileştirildi.
+        */
+        :root {
+            --bg-dark: #111214;
+            --bg-medium: #18191C;
+            --color-text: #E5E7EB;
+            --color-link: #00A8FC;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            color: var(--color-text);
+            font-family: 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
+            -webkit-app-region: drag; /* Pencereyi sürüklemek için */
+            
+            /* Ana uygulamadaki gradyan animasyonunu buraya da taşıyoruz */
+            background: linear-gradient(-45deg, #0a0a0c, #18191C, #003d5c, #111214);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 0.2s; /* Hafif bir gecikmeyle başlasın */
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            /* Logoya hafif bir gölge ve parlama efekti */
+            filter: drop-shadow(0 0 15px rgba(0, 168, 252, 0.4));
+        }
+
+        h1 {
+            font-size: 1.5em;
+            font-weight: 500;
+            color: white;
+            letter-spacing: 1px; /* Harf aralığı */
+        }
+
+        /* Yeni Yükleme Animasyonu */
+        .loading-dots {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .loading-dots div {
+            width: 10px;
+            height: 10px;
+            background-color: var(--color-link);
+            border-radius: 50%;
+            animation: pulse 1.4s infinite ease-in-out both;
+        }
+        .loading-dots .dot-1 { animation-delay: -0.32s; }
+        .loading-dots .dot-2 { animation-delay: -0.16s; }
+
+        @keyframes pulse {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1.0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="./icon.png" alt="AuraChat Icon" class="app-icon">
+        <h1>AuraChat</h1>
+        <div class="loading-dots">
+            <div class="dot-1"></div>
+            <div class="dot-2"></div>
+            <div class="dot-3"></div>
+        </div>
+    </div>
+</body>
+</html>
